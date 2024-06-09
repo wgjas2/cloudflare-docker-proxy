@@ -1,16 +1,16 @@
-addEventListener("fetch", (event) => {
+addEventListener("fetch"， (event) => {
   event.passThroughOnException();
   event.respondWith(handleRequest(event.request));
 });
 
 const routes = {
-  "docker.libcuda.so": "https://registry-1.docker.io",
-  "quay.libcuda.so": "https://quay.io",
-  "gcr.libcuda.so": "https://gcr.io",
-  "k8s-gcr.libcuda.so": "https://k8s.gcr.io",
-  "k8s.libcuda.so": "https://registry.k8s.io",
-  "ghcr.libcuda.so": "https://ghcr.io",
-  "cloudsmith.libcuda.so": "https://docker.cloudsmith.io",
+  "docker.cr.cno.link": "https://registry-1.docker.io",
+  "quay.cr.cno.link": "https://quay.io",
+  "gcr.cr.cno.link": "https://gcr.io",
+  "k8s-gcr.cr.cno.link": "https://k8s.gcr.io",
+  "k8s.cr.cno.link": "https://registry.k8s.io",
+  "ghcr.cr.cno.link": "https://ghcr.io",
+  "codeberg.cr.cno.link": "https://codeberg.org",
 };
 
 function routeByHosts(host) {
