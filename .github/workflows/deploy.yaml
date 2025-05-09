@@ -24,6 +24,5 @@ jobs:
           accountId: ${{secrets.CF_ACCOUNT_ID}}
           vars:
             CUSTOM_DOMAIN
-            CUSTOM_DOMAINS
           command: deploy --env production --minify src/index.js
           environment: production
