@@ -9,19 +9,19 @@ const routes = {};
 
 function addRoutes(domain) {
   // production
-  routeVar["docker." + domain] = dockerHub;
-  routeVar["quay." + domain] = "https://quay.io";
-  routeVar["gcr." + domain] = "https://gcr.io";
-  routeVar["k8s-gcr." + domain] = "https://k8s.gcr.io";
-  routeVar["k8s." + domain] = "https://registry.k8s.io";
-  routeVar["ghcr." + domain] = "https://ghcr.io";
-  routeVar["cloudsmith." + domain] = "https://docker.cloudsmith.io";
-  routeVar["ecr." + domain] = "https://public.ecr.aws";
-  routeVar["codeberg." + domain] = "https://codeberg.org";
-  routeVar["forgejo." + domain] = "https://code.forgejo.org";
+  routes["docker." + domain] = dockerHub;
+  routes["quay." + domain] = "https://quay.io";
+  routes["gcr." + domain] = "https://gcr.io";
+  routes["k8s-gcr." + domain] = "https://k8s.gcr.io";
+  routes["k8s." + domain] = "https://registry.k8s.io";
+  routes["ghcr." + domain] = "https://ghcr.io";
+  routes["cloudsmith." + domain] = "https://docker.cloudsmith.io";
+  routes["ecr." + domain] = "https://public.ecr.aws";
+  routes["codeberg." + domain] = "https://codeberg.org";
+  routes["forgejo." + domain] = "https://code.forgejo.org";
 
   if (MODE === "staging") {
-    routeVar["docker-staging." + CUSTOM_DOMAIN] = dockerHub;
+    routes["docker-staging." + CUSTOM_DOMAIN] = dockerHub;
   }
 }
 
