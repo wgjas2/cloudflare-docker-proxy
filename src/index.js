@@ -5,21 +5,36 @@ addEventListener("fetch", (event) => {
 
 const dockerHub = "https://registry-1.docker.io";
 
-const routes = {
-  // production
-  ["docker." + CUSTOM_DOMAIN]: dockerHub,
-  ["quay." + CUSTOM_DOMAIN]: "https://quay.io",
-  ["gcr." + CUSTOM_DOMAIN]: "https://gcr.io",
-  ["k8s-gcr." + CUSTOM_DOMAIN]: "https://k8s.gcr.io",
-  ["k8s." + CUSTOM_DOMAIN]: "https://registry.k8s.io",
-  ["ghcr." + CUSTOM_DOMAIN]: "https://ghcr.io",
-  ["cloudsmith." + CUSTOM_DOMAIN]: "https://docker.cloudsmith.io",
-  ["ecr." + CUSTOM_DOMAIN]: "https://public.ecr.aws",
-  ["codeberg." + CUSTOM_DOMAIN]: "https://codeberg.org",
+const routes = {};
 
-  // staging
-  ["docker-staging." + CUSTOM_DOMAIN]: dockerHub,
-};
+function addRoutes(domain) {
+  // production
+  routeVar["docker." + domain] = dockerHub;
+  routeVar["quay." + domain] = "https://quay.io";
+  routeVar["gcr." + domain] = "https://gcr.io";
+  routeVar["k8s-gcr." + domain] = "https://k8s.gcr.io";
+  routeVar["k8s." + domain] = "https://registry.k8s.io";
+  routeVar["ghcr." + domain] = "https://ghcr.io";
+  routeVar["cloudsmith." + domain] = "https://docker.cloudsmith.io";
+  routeVar["ecr." + domain] = "https://public.ecr.aws";
+  routeVar["codeberg." + domain] = "https://codeberg.org";
+  routeVar["forgejo." + domain] = "https://code.forgejo.org";
+
+  if (MODE === "staging") {
+    routeVar["docker-staging." + CUSTOM_DOMAIN] = dockerHub;
+  }
+}
+
+if (CUSTOM_DOMAIN.length > 0) {
+  addRoutes(CUSTOM_DOMAIN);
+}
+
+if (CUSTOM_DOMAINS.length > 0) {
+  const domains = CUSTOM_DOMAINS.split(",");
+  for (let domain of domains) {
+    addRoutes(domain);
+  }
+}
 
 function routeByHosts(host) {
   if (host in routes) {
