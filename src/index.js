@@ -25,15 +25,13 @@ function addRoutes(domain) {
   }
 }
 
-if (CUSTOM_DOMAIN.length > 0) {
-  addRoutes(CUSTOM_DOMAIN);
-}
-
-if (CUSTOM_DOMAINS.length > 0) {
-  const domains = CUSTOM_DOMAINS.split(",");
+if (CUSTOM_DOMAIN.includes(";")) {
+  const domains = CUSTOM_DOMAIN.split(";");
   for (let domain of domains) {
     addRoutes(domain);
   }
+} else {
+  addRoutes(CUSTOM_DOMAIN);
 }
 
 function routeByHosts(host) {

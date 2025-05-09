@@ -18,7 +18,6 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         env:
           CUSTOM_DOMAIN: ${{ secrets.CUSTOM_DOMAIN || 'libcuda.so' }}
-          CUSTOM_DOMAINS: ${{ secrets.CUSTOM_DOMAINS || '' }}
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{secrets.CF_ACCOUNT_ID}}
